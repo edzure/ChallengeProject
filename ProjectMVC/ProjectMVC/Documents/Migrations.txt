@@ -1,0 +1,5 @@
+﻿enable-migrations -ContextTypeName DataContext -MigrationsDirectory Migrations\DataProjectMVC
+
+add-migration -ConfigureTypeName Courses.Web.Migrations.CoursesMigrations.Configuration "InitialCreate"
+
+update-database -ConfigureTypeName Courses.Web.Migrations.CoursesMigrations.Configuration

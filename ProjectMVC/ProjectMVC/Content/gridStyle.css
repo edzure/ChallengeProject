@@ -1,0 +1,35 @@
+﻿.webgrid-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border: solid 1px #000000;
+    background-color: white;
+}
+
+    .webgrid-table td, th {
+        border: 1px solid #000000;
+        padding: 3px 7px 2px;
+    }
+
+.webgrid-header {
+    background-color: #42b2c9;
+    color: #FFFFFF;
+    padding-bottom: 4px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.webgrid-footer {
+}
+
+.webgrid-row-style {
+    padding: 3px 7px 2px;
+}
+
+.webgrid-alternating-row {
+    background-color: #d3e5f2;
+    padding: 3px 7px 2px;
+}
+

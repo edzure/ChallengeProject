@@ -1,0 +1,51 @@
+﻿@model ProjectMVC.Models.HomeViewModel    
+
+@{
+    ViewBag.Title = "Home Page";
+    WebGrid webGrid = new WebGrid(source: Model.UserProjectList, canSort: false, rowsPerPage: 10);    
+}
+<link href="~/Content/gridStyle.css" rel="stylesheet" />
+
+<div class="jumbotron">
+    <h1></h1>    
+    <div>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @id="userform"}))
+        {
+            @Html.DropDownListFor(x => x.UserList, new SelectList(Model.UserList, "Id", "FullName"), new { @id = "UserList" })       
+        }
+    </div>
+    <div id="gridContent" style=" padding:20px; ">
+        @if (Model.UserProjectList != null)
+        {
+            @webGrid.GetHtml(
+                tableStyle: "webgrid-table",
+                headerStyle: "webgrid-header",
+                footerStyle: "webgrid-footer",
+                alternatingRowStyle: "webgrid-alternating-row",
+                selectedRowStyle: "webgrid-selected-row",
+                rowStyle: "webgrid-row-style",
+                mode: WebGridPagerModes.All,
+
+                htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+            columns: webGrid.Columns(
+                webGrid.Column("ProjectId", "Project Id"),
+                webGrid.Column("UserId", "User Id"),
+                webGrid.Column("StartDate", "Start Date", format: x => x.StartDate.ToString("dd/MM/yyyy")),
+                webGrid.Column("TimeToStart", "Time To Start"),
+                webGrid.Column("EndDate", "End Date", format: x => x.StartDate.ToString("dd/MM/yyyy")),
+                webGrid.Column("Credits", "Credits"),
+                webGrid.Column("IsActive", "Is Active")
+                ))
+        }
+        else
+        {
+            <p>Data not Found</p>
+        }        
+    </div>
+    <p></p>
+</div>
+
+@section scripts
+{ 
+<script src="~/Scripts/app/logic.js"></script> 
+}
